@@ -672,6 +672,12 @@ const App = () => {
                     alt={member.name}
                     className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
                   />
+                ) : index === 1 ? (
+                  <img 
+                    src="/SiloGuard/ammar-profile.png" 
+                    alt={member.name}
+                    className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
+                  />
                 ) : (
                   <div className="w-64 h-64 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
                     <MessageSquare className="w-32 h-32 text-white" />
@@ -692,7 +698,7 @@ const App = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
                 <div className="text-4xl mb-2" style={{color: primary}}>"</div>
-                <p className="text-gray-700 mb-4">This project is an impressive idea. You will need a large amount of data for this product. I will connect you with an expert in AI modelling in China.</p>
+                <p className="text-gray-700 mb-4">This project is an impressive idea. I will contact Dr. Mustapha for you to meet him as he has expertise in Food Egineering</p>
                 <p className="font-semibold text-gray-900">Prof. Hauwa L. Yusuf</p>
                 <p className="text-sm text-gray-500">Food Science, BUK</p>
               </div>
@@ -701,7 +707,7 @@ const App = () => {
                 <p className="text-gray-700 mb-4">[He acknowledged the idea and added:] 
 “You will need a large amount of data for this product. I will connect you will and expert in Ai modelling in China, who is my friend”</p>
                 <p className="font-semibold text-gray-900">Dr. Mustapha</p>
-                <p className="text-sm text-gray-500">PhD Food Safety, Rice Processing Industry</p>
+                <p className="text-sm text-gray-500">PhD Food Safety, M.D. Rice Processing Factory</p>
               </div>
             </div>
           </div>
