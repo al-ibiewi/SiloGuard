@@ -358,8 +358,8 @@ const App = () => {
               return (
                 <div
                   key={index}
-                  className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-red-200/30 hover:shadow-lg transition-all shadow-sm"
-                  style={{boxShadow: `0 8px 32px 0 rgba(239, 68, 68, 0.1)`}}
+                  className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:shadow-lg transition-all"
+                  style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
                 >
                   <IconComponent className="w-10 h-10 mb-4 text-red-600" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{problem.title}</h3>
@@ -414,8 +414,8 @@ const App = () => {
               return (
                 <div
                   key={index}
-                  className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:shadow-md transition-all group shadow-sm"
-                  style={{boxShadow: `0 8px 32px 0 ${colorWithOpacity(primary, '10')}`}}
+                  className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:shadow-lg transition-all group"
+                  style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
                 >
                   <IconComponent className="w-10 h-10 mb-4 group-hover:scale-110 transition-transform" style={{color: primary}} />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
@@ -495,7 +495,7 @@ const App = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-lg">
+            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Revenue Streams</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -524,7 +524,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-lg">
+            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
               <h3 className="text-xl font-semibold text-gray-900 mb-6">3-Year Financial Forecast</h3>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -570,7 +570,8 @@ const App = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="bg-white/40 backdrop-blur-md p-8 rounded-2xl text-center border border-white/20 hover:shadow-lg transition-all shadow-sm"
+                className="bg-white/40 backdrop-blur-md p-8 rounded-2xl text-center border border-white/20 hover:shadow-lg transition-all"
+                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
               >
                 <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
                   <MessageSquare className="w-12 h-12 text-white" />
@@ -588,13 +589,13 @@ const App = () => {
               What Experts Say About SiloGuard
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="backdrop-blur-md p-6 rounded-2xl border" style={{backgroundColor: colorWithOpacity(primary, light), borderColor: `${primary}40`}}>
+              <div className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
                 <div className="text-4xl mb-2" style={{color: primary}}>"</div>
                 <p className="text-gray-700 mb-4">This project is an impressive idea. You will need a large amount of data for this product. I will connect you with an expert in AI modelling in China.</p>
                 <p className="font-semibold text-gray-900">Prof. Hauwa L. Yusuf</p>
                 <p className="text-sm text-gray-500">Food Science, BUK</p>
               </div>
-              <div className="backdrop-blur-md p-6 rounded-2xl border" style={{backgroundColor: colorWithOpacity(secondary, light), borderColor: `${secondary}40`}}>
+              <div className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
                 <div className="text-4xl mb-2" style={{color: secondary}}>"</div>
                 <p className="text-gray-700 mb-4">[Positive acknowledgment of the solution's value for the rice processing industry]</p>
                 <p className="font-semibold text-gray-900">Dr. Mustapha</p>
