@@ -224,92 +224,57 @@ const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 relative overflow-hidden">
-        <div className="absolute inset-0" style={{background: `linear-gradient(to bottom right, ${colorWithOpacity(primary, light)}, white, ${colorWithOpacity(secondary, light)})`}}></div>
-        <div className="absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl" style={{backgroundColor: colorWithOpacity(secondary, dark)}}></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl" style={{backgroundColor: colorWithOpacity(primary, dark)}}></div>
+      <section id="home" className="pt-16 relative overflow-hidden min-h-screen flex items-center">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{backgroundImage: 'url(/SiloGuard/grains.png)'}}
+        ></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style={{backgroundColor: colorWithOpacity(primary, medium), color: primary}}>
-                <Globe className="mr-2 w-4 h-4" />
-                Fighting Food Waste in Nigeria
-              </div>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Intelligent Protection
-                <span style={{color: primary}}> for Stored Grains</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-lg">
-                SiloGuard is a modular, solar-powered, AI-driven monitoring device that combines acoustic insect detection with environmental sensing to provide real-time early warnings.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button className="text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
-                  Learn More
-                </button>
-                <button className="text-gray-700 px-8 py-4 rounded-xl font-semibold border-2 transition-colors" style={{borderColor: primary, color: primary}}>
-                  Watch Demo
-                </button>
-              </div>
-
-              <div className="mt-12 flex flex-wrap gap-6">
-                <div className="flex items-center space-x-2">
-                  <Bot className="w-6 h-6" style={{color: primary}} />
-                  <span className="text-sm text-gray-600">AI/ML</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Cpu className="w-6 h-6" style={{color: primary}} />
-                  <span className="text-sm text-gray-600">Embedded</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Radio className="w-6 h-6" style={{color: primary}} />
-                  <span className="text-sm text-gray-600">IoT</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mic className="w-6 h-6" style={{color: primary}} />
-                  <span className="text-sm text-gray-600">Acoustic</span>
-                </div>
-              </div>
+        {/* Dark Overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+        
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium mb-8 bg-white/10 backdrop-blur-md border border-white/20" style={{color: secondary}}>
+              <Globe className="mr-2 w-5 h-5" />
+              Fighting Food Waste in Nigeria
+            </div>
+            
+            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+              Intelligent Protection
+              <span className="block mt-2" style={{color: secondary}}> for Stored Grains</span>
+            </h1>
+            
+            <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+              SiloGuard is a modular, solar-powered, AI-driven monitoring device that combines acoustic insect detection with environmental sensing to provide real-time early warnings.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 justify-center mb-16">
+              <button className="text-white px-10 py-5 rounded-xl font-semibold transition-all shadow-2xl hover:scale-105" style={{backgroundColor: primary}}>
+                Learn More
+              </button>
+              <button className="text-white px-10 py-5 rounded-xl font-semibold bg-white/10 backdrop-blur-md border-2 border-white/30 transition-all hover:bg-white/20">
+                Watch Demo
+              </button>
             </div>
 
-            <div className="relative">
-              <div className="relative rounded-3xl p-8 shadow-2xl" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`, boxShadow: `0 25px 50px -12px ${colorWithOpacity(primary, dark)}`}}>
-                <div className="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-2 shadow-lg">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 rounded-full animate-pulse" style={{backgroundColor: primary}}></div>
-                    <span className="text-sm font-medium text-gray-700">Live Monitoring</span>
-                  </div>
-                </div>
-                
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white">
-                  <div className="text-center mb-6">
-                    <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-16 mx-auto mb-4 invert brightness-0" />
-                    <h3 className="text-xl font-semibold">SiloGuard Device</h3>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <Thermometer className="w-8 h-8 mb-1 mx-auto" />
-                      <div className="text-2xl font-bold">28°C</div>
-                      <div className="text-xs opacity-80">Temperature</div>
-                    </div>
-                    <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <Droplet className="w-8 h-8 mb-1 mx-auto" />
-                      <div className="text-2xl font-bold">65%</div>
-                      <div className="text-xs opacity-80">Humidity</div>
-                    </div>
-                    <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <Cloud className="w-8 h-8 mb-1 mx-auto" />
-                      <div className="text-2xl font-bold">410ppm</div>
-                      <div className="text-xs opacity-80">CO₂</div>
-                    </div>
-                    <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <Database className="w-8 h-8 mb-1 mx-auto" />
-                      <div className="text-lg font-bold">All Clear</div>
-                      <div className="text-xs opacity-90">No Insects</div>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex flex-wrap gap-8 justify-center">
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                <Bot className="w-6 h-6 text-white" />
+                <span className="text-base font-medium text-white">AI/ML</span>
+              </div>
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                <Cpu className="w-6 h-6 text-white" />
+                <span className="text-base font-medium text-white">Embedded</span>
+              </div>
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                <Radio className="w-6 h-6 text-white" />
+                <span className="text-base font-medium text-white">IoT</span>
+              </div>
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                <Mic className="w-6 h-6 text-white" />
+                <span className="text-base font-medium text-white">Acoustic</span>
               </div>
             </div>
           </div>
