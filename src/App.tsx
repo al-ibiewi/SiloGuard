@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { 
   Target, Thermometer, Sun, Smartphone, Bot, Cloud, 
   Bug, Biohazard, Droplet, AlertTriangle, Database, 
@@ -25,6 +25,35 @@ const THEME = {
 const colorWithOpacity = (color: string, opacityPercent: string) => {
   const opacity = Math.round((parseInt(opacityPercent) / 100) * 255).toString(16);
   return color + opacity.padStart(2, '0').toUpperCase();
+};
+
+// Counter component for animated numbers
+const Counter = ({ end, duration = 2, suffix = '' }: { end: number; duration?: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number | null = null;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      
+      setCount(Math.floor(progress * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isInView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
 };
 
 const App = () => {
@@ -372,7 +401,9 @@ const App = () => {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">30%</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                <Counter end={30} duration={2} suffix="%" />
+              </div>
               <div style={{color: `${secondary}ff`}}>Loss Reduction</div>
             </motion.div>
             <motion.div 
@@ -382,7 +413,9 @@ const App = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">₦3.5T</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                ₦<Counter end={3.5} duration={2} />T
+              </div>
               <div style={{color: `${secondary}ff`}}>Annual Losses in Nigeria</div>
             </motion.div>
             <motion.div 
@@ -392,7 +425,9 @@ const App = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">24/7</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                <Counter end={24} duration={2} />/7
+              </div>
               <div style={{color: `${secondary}ff`}}>Autonomous Monitoring</div>
             </motion.div>
             <motion.div 
@@ -402,7 +437,9 @@ const App = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">100%</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                <Counter end={100} duration={2} suffix="%" />
+              </div>
               <div style={{color: `${secondary}ff`}}>Solar Powered</div>
             </motion.div>
           </div>
