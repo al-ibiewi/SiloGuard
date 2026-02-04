@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 const App = () => {
+  const brandPrimary = '#034e2e';
+  const brandSecondary = '#9cd32e';
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -151,12 +153,13 @@ const App = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`capitalize text-sm font-medium transition-colors ${activeSection === item ? 'text-emerald-600' : 'text-gray-600 hover:text-emerald-600'}`}
+                  className={`capitalize text-sm font-medium transition-colors ${activeSection === item ? '' : 'text-gray-600'}`}
+                  style={{color: activeSection === item ? brandPrimary : undefined}}
                 >
                   {item === 'how' ? 'How It Works' : item}
                 </button>
               ))}
-              <button className="bg-emerald-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+              <button className="text-white px-5 py-2 rounded-lg font-medium transition-colors" style={{backgroundColor: brandPrimary}}>
                 Get Started
               </button>
             </div>
@@ -182,7 +185,8 @@ const App = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="block w-full text-left capitalize py-2 text-gray-600 hover:text-emerald-600"
+                  className="block w-full text-left capitalize py-2 text-gray-600"
+                  style={{color: activeSection === item ? brandPrimary : undefined}}
                 >
                   {item === 'how' ? 'How It Works' : item}
                 </button>
@@ -194,29 +198,29 @@ const App = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50"></div>
-        <div className="absolute top-20 right-0 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0" style={{background: `linear-gradient(to bottom right, ${brandPrimary}15, white, ${brandSecondary}15)`}}></div>
+        <div className="absolute top-20 right-0 w-96 h-96 rounded-full blur-3xl" style={{backgroundColor: `${brandSecondary}30`}}></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl" style={{backgroundColor: `${brandPrimary}30`}}></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style={{backgroundColor: `${brandPrimary}20`, color: brandPrimary}}>
                 <span className="mr-2">🌍</span>
                 Fighting Food Waste in Nigeria
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Intelligent Protection
-                <span className="text-emerald-600"> for Stored Grains</span>
+                <span style={{color: brandPrimary}}> for Stored Grains</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-lg">
                 SiloGuard is a modular, solar-powered, AI-driven monitoring device that combines acoustic insect detection with environmental sensing to provide real-time early warnings.
               </p>
               <div className="flex flex-wrap gap-4">
-                <button className="bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl hover:shadow-emerald-300">
+                <button className="text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg" style={{backgroundColor: brandPrimary}}>
                   Learn More
                 </button>
-                <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:border-emerald-600 hover:text-emerald-600 transition-colors">
+                <button className="text-gray-700 px-8 py-4 rounded-xl font-semibold border-2 transition-colors" style={{borderColor: brandPrimary, color: brandPrimary}}>
                   Watch Demo
                 </button>
               </div>
@@ -242,10 +246,10 @@ const App = () => {
             </div>
 
             <div className="relative">
-              <div className="relative bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-8 shadow-2xl shadow-emerald-200/50">
+              <div className="relative rounded-3xl p-8 shadow-2xl" style={{background: `linear-gradient(to bottom right, ${brandPrimary}, ${brandSecondary})`, boxShadow: `0 25px 50px -12px ${brandPrimary}30`}}>
                 <div className="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-2 shadow-lg">
                   <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 rounded-full animate-pulse" style={{backgroundColor: brandPrimary}}></div>
                     <span className="text-sm font-medium text-gray-700">Live Monitoring</span>
                   </div>
                 </div>
@@ -272,7 +276,7 @@ const App = () => {
                       <div className="text-2xl font-bold">410ppm</div>
                       <div className="text-xs opacity-80">CO₂</div>
                     </div>
-                    <div className="bg-green-500/80 rounded-xl p-4 text-center">
+                    <div className="bg-white/10 rounded-xl p-4 text-center">
                       <div className="text-3xl mb-1">✅</div>
                       <div className="text-lg font-bold">All Clear</div>
                       <div className="text-xs opacity-90">No Insects</div>
@@ -286,24 +290,24 @@ const App = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-emerald-600 py-16">
+      <section className="py-16" style={{backgroundColor: brandPrimary}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">30%</div>
-              <div className="text-emerald-100">Loss Reduction</div>
+              <div style={{color: `${brandSecondary}ff`}}>Loss Reduction</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">₦3.5T</div>
-              <div className="text-emerald-100">Annual Losses in Nigeria</div>
+              <div style={{color: `${brandSecondary}ff`}}>Annual Losses in Nigeria</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">24/7</div>
-              <div className="text-emerald-100">Autonomous Monitoring</div>
+              <div style={{color: `${brandSecondary}ff`}}>Autonomous Monitoring</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-emerald-100">Solar Powered</div>
+              <div style={{color: `${brandSecondary}ff`}}>Solar Powered</div>
             </div>
           </div>
         </div>
@@ -350,7 +354,7 @@ const App = () => {
               ))}
             </div>
             <div className="text-center mt-8">
-              <span className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold">
+              <span className="inline-block text-white px-6 py-3 rounded-full font-semibold" style={{backgroundColor: brandPrimary}}>
                 That's Why SiloGuard!
               </span>
             </div>
@@ -362,7 +366,7 @@ const App = () => {
       <section id="solution" className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block rounded-full text-sm font-medium mb-4 px-4 py-2" style={{backgroundColor: `${brandPrimary}20`, color: brandPrimary}}>
               Our Solution
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -403,13 +407,13 @@ const App = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {howItWorks.map((item, index) => (
               <div key={index} className="relative">
-                <div className="bg-emerald-600 text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <div className="text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: brandPrimary}}>
                   {item.step}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.description}</p>
                 {index < howItWorks.length - 1 && (
-                  <div className="hidden lg:block absolute top-6 left-16 w-full h-0.5 bg-gradient-to-r from-emerald-300 to-transparent"></div>
+                  <div className="hidden lg:block absolute top-6 left-16 w-full h-0.5" style={{background: `linear-gradient(to right, ${brandPrimary}, transparent)`}}></div>
                 )}
               </div>
             ))}
@@ -418,13 +422,13 @@ const App = () => {
       </section>
 
       {/* Impact & SDGs */}
-      <section id="impact" className="py-20 bg-gradient-to-br from-emerald-600 to-teal-700">
+      <section id="impact" className="py-20" style={{background: `linear-gradient(to bottom right, ${brandPrimary}, ${brandSecondary})`}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               Impact & Sustainable Development Goals
             </h2>
-            <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
+            <p className="text-xl text-white max-w-3xl mx-auto opacity-90">
               Saving 30% of the harvest is cheaper & easier than growing 30% more
             </p>
           </div>
@@ -436,10 +440,10 @@ const App = () => {
                 className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl text-center hover:bg-white/20 transition-colors"
               >
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-emerald-600">{sdg.number}</span>
+                  <span className="text-2xl font-bold" style={{color: brandPrimary}}>{sdg.number}</span>
                 </div>
                 <h3 className="text-white font-semibold mb-2">{sdg.title}</h3>
-                <p className="text-emerald-100 text-xs">{sdg.description}</p>
+                <p className="text-white text-xs opacity-80">{sdg.description}</p>
               </div>
             ))}
           </div>
@@ -460,7 +464,7 @@ const App = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Revenue Streams</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{backgroundColor: `${brandPrimary}20`}}>
                     <span className="text-2xl">💻</span>
                   </div>
                   <div>
@@ -501,9 +505,9 @@ const App = () => {
                     {financials.map((row, index) => (
                       <tr key={index} className="border-b border-gray-50">
                         <td className="py-4 text-gray-700 font-medium">{row.metric}</td>
-                        <td className="py-4 text-center text-emerald-600 font-semibold">{row.year1}</td>
-                        <td className="py-4 text-center text-emerald-600 font-semibold">{row.year2}</td>
-                        <td className="py-4 text-center text-emerald-600 font-semibold">{row.year3}</td>
+                        <td className="py-4 text-center font-semibold" style={{color: brandPrimary}}>{row.year1}</td>
+                        <td className="py-4 text-center font-semibold" style={{color: brandPrimary}}>{row.year2}</td>
+                        <td className="py-4 text-center font-semibold" style={{color: brandPrimary}}>{row.year3}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -533,11 +537,11 @@ const App = () => {
                 key={index}
                 className="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow"
               >
-                <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${brandPrimary}, ${brandSecondary})`}}>
                   <span className="text-4xl">👤</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-emerald-600 font-semibold mb-2">{member.role}</p>
+                <p className="font-semibold" style={{color: brandPrimary}}>{member.role}</p>
                 <p className="text-gray-500 text-sm mb-3">{member.expertise}</p>
                 <p className="text-gray-600 text-sm">{member.bio}</p>
               </div>
@@ -549,14 +553,14 @@ const App = () => {
               What Experts Say About SiloGuard
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
-                <div className="text-emerald-600 text-4xl mb-2">"</div>
+              <div className="p-6 rounded-2xl border-2" style={{backgroundColor: `${brandPrimary}10`, borderColor: brandPrimary}}>
+                <div className="text-4xl mb-2" style={{color: brandPrimary}}>"</div>
                 <p className="text-gray-700 mb-4">This project is an impressive idea. You will need a large amount of data for this product. I will connect you with an expert in AI modelling in China.</p>
                 <p className="font-semibold text-gray-900">Prof. Hauwa L. Yusuf</p>
                 <p className="text-sm text-gray-500">Food Science, BUK</p>
               </div>
-              <div className="bg-teal-50 p-6 rounded-2xl border border-teal-100">
-                <div className="text-teal-600 text-4xl mb-2">"</div>
+              <div className="p-6 rounded-2xl border-2" style={{backgroundColor: `${brandSecondary}10`, borderColor: brandSecondary}}>
+                <div className="text-4xl mb-2" style={{color: brandSecondary}}>"</div>
                 <p className="text-gray-700 mb-4">[Positive acknowledgment of the solution's value for the rice processing industry]</p>
                 <p className="font-semibold text-gray-900">Dr. Mustapha</p>
                 <p className="text-sm text-gray-500">PhD Food Safety, Rice Processing Industry</p>
@@ -576,18 +580,18 @@ const App = () => {
             Join the revolution in post-harvest management. Save food, save money, and feed the future.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all shadow-lg">
+            <button className="text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg" style={{backgroundColor: brandPrimary}}>
               Get a Quote
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+            <button className="text-white px-8 py-4 rounded-xl font-semibold transition-colors" style={{borderColor: 'white', borderWidth: '2px', color: 'white'}}>
               Contact Us
             </button>
           </div>
           <div className="mt-12 flex justify-center space-x-8">
-            <a href="mailto:abubakar.o.zubair@gmail.com" className="text-gray-400 hover:text-emerald-400 transition-colors">
+            <a href="mailto:abubakar.o.zubair@gmail.com" className="transition-colors" style={{color: '#666666'}}>
               📧 abubakar.o.zubair@gmail.com
             </a>
-            <a href="tel:+2348138188291" className="text-gray-400 hover:text-emerald-400 transition-colors">
+            <a href="tel:+2348138188291" className="transition-colors" style={{color: '#666666'}}>
               📱 +234 813 818 8291
             </a>
           </div>
