@@ -186,9 +186,11 @@ const App = () => {
                   {item === 'how' ? 'How It Works' : item}
                 </button>
               ))}
-              <button className="text-white px-5 py-2 rounded-lg font-medium transition-colors" style={{backgroundColor: primary}}>
-                Get Started
-              </button>
+              <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+                <button className="text-white px-5 py-2 rounded-lg font-medium transition-colors" style={{backgroundColor: primary}}>
+                  Get Started
+                </button>
+              </a>
             </div>
 
             <button
@@ -251,9 +253,11 @@ const App = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center mb-16">
-              <button className="text-white px-10 py-5 rounded-xl font-semibold transition-all shadow-2xl hover:scale-105" style={{backgroundColor: primary}}>
-                Learn More
-              </button>
+              <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+                <button className="text-white px-10 py-5 rounded-xl font-semibold transition-all shadow-2xl hover:scale-105" style={{backgroundColor: primary}}>
+                  Learn More
+                </button>
+              </a>
               <button className="text-white px-10 py-5 rounded-xl font-semibold bg-white/10 backdrop-blur-md border-2 border-white/30 transition-all hover:bg-white/20">
                 Watch Demo
               </button>
@@ -581,12 +585,16 @@ const App = () => {
             Join the revolution in post-harvest management. Save food, save money, and feed the future.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
-              Get a Quote
-            </button>
-            <button className="text-white px-8 py-4 rounded-xl font-semibold transition-colors" style={{borderColor: 'white', borderWidth: '2px', color: 'white'}}>
-              Contact Us
-            </button>
+            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+              <button className="text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
+                Get a Quote
+              </button>
+            </a>
+            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+              <button className="text-white px-8 py-4 rounded-xl font-semibold transition-colors" style={{borderColor: 'white', borderWidth: '2px', color: 'white'}}>
+                Contact Us
+              </button>
+            </a>
           </div>
           <div className="mt-12 flex justify-center gap-8 flex-wrap">
             <a href="mailto:abubakar.o.zubair@gmail.com" className="transition-colors flex items-center gap-2" style={{color: '#666666'}}>
