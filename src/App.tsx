@@ -238,7 +238,7 @@ const App = () => {
           <div className="max-w-4xl mx-auto">
             <div className="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium mb-8 bg-white/10 backdrop-blur-md border border-white/20" style={{color: secondary}}>
               <Globe className="mr-2 w-5 h-5" />
-              Fighting Food Waste in Nigeria
+              Saving 30% of the harvest is cheaper & easier than growing 30% more
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
