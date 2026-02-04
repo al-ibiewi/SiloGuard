@@ -143,7 +143,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-10" />
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -599,7 +599,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-10" />
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
             </div>
             <p className="text-gray-400 text-sm">
               © 2025 SiloGuard. Intelligent Protection for Stored Grains.
