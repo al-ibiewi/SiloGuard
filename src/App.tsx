@@ -227,7 +227,7 @@ const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 relative overflow-hidden min-h-screen flex items-center">
+      <section id="home" className="pt-16 relative min-h-screen flex items-center overflow-x-hidden">
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -237,8 +237,8 @@ const App = () => {
         {/* Dark Overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
         
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
-          <div className="max-w-4xl mx-auto">
+        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
+          <div className="max-w-4xl mx-auto w-full">
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -311,49 +311,48 @@ const App = () => {
             </motion.div>
 
             {/* Mobile View - Marquee */}
-            <div className="md:hidden overflow-hidden relative w-full">
+            <div className="md:hidden overflow-x-hidden relative w-full max-w-full">
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, x: [0, -1000] }}
+                animate={{ opacity: 1, x: ["0%", "-50%"] }}
                 transition={{ 
                   opacity: { duration: 0.6, delay: 0.8 },
-                  x: { duration: 15, repeat: Infinity, ease: "linear", repeatType: "loop" }
+                  x: { duration: 20, repeat: Infinity, ease: "linear", repeatType: "loop" }
                 }}
-                className="flex gap-4 whitespace-nowrap"
-                style={{ width: 'max-content' }}
+                className="flex gap-4"
               >
                 {/* First set */}
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Bot className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Bot className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">AI/ML</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Cpu className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Cpu className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">Embedded</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Radio className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Radio className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">IoT</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Mic className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Mic className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">Acoustic</span>
                 </div>
                 {/* Duplicate set for seamless loop */}
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Bot className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Bot className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">AI/ML</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Cpu className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Cpu className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">Embedded</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Radio className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Radio className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">IoT</span>
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
-                  <Mic className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                  <Mic className="w-6 h-6 text-white flex-shrink-0" />
                   <span className="text-base font-medium text-white">Acoustic</span>
                 </div>
               </motion.div>
