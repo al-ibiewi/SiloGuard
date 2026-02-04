@@ -21,6 +21,31 @@ const colorWithOpacity = (color: string, opacityPercent: string) => {
   return color + opacity.padStart(2, '0').toUpperCase();
 };
 
+// ========== ICON COMPONENT ==========
+// Reusable icon box component with consistent styling
+interface IconBoxProps {
+  icon: string;
+  size?: 'sm' | 'md' | 'lg';
+  color?: string;
+}
+
+const IconBox = ({ icon, size = 'md', color }: IconBoxProps) => {
+  const sizeMap = {
+    sm: { box: 'w-10 h-10', text: 'text-lg' },
+    md: { box: 'w-12 h-12', text: 'text-2xl' },
+    lg: { box: 'w-24 h-24', text: 'text-4xl' },
+  };
+
+  return (
+    <div
+      className={`${sizeMap[size].box} rounded-xl flex items-center justify-center flex-shrink-0 text-white`}
+      style={{ backgroundColor: color || THEME.colors.primary }}
+    >
+      <span className={sizeMap[size].text}>{icon}</span>
+    </div>
+  );
+};
+
 const App = () => {
   const { primary, secondary } = THEME.colors;
   const { light, medium, dark } = THEME.opacity;
@@ -249,19 +274,19 @@ const App = () => {
 
               <div className="mt-12 flex flex-wrap gap-6">
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">🤖</span>
+                  <IconBox icon="🤖" size="sm" color={primary} />
                   <span className="text-sm text-gray-600">AI/ML</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">🔌</span>
+                  <IconBox icon="🔌" size="sm" color={primary} />
                   <span className="text-sm text-gray-600">Embedded</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">📡</span>
+                  <IconBox icon="📡" size="sm" color={primary} />
                   <span className="text-sm text-gray-600">IoT</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">🔊</span>
+                  <IconBox icon="🔊" size="sm" color={primary} />
                   <span className="text-sm text-gray-600">Acoustic</span>
                 </div>
               </div>
@@ -353,7 +378,7 @@ const App = () => {
                 key={index}
                 className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-2xl border border-red-100 hover:shadow-lg transition-shadow"
               >
-                <div className="text-4xl mb-4">{problem.icon}</div>
+                <IconBox icon={problem.icon} size="md" color="#ef4444" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{problem.title}</h3>
                 <p className="text-gray-600 text-sm">{problem.description}</p>
               </div>
@@ -367,9 +392,7 @@ const App = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {limitations.map((item, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">⚠️</span>
-                  </div>
+                  <IconBox icon="⚠️" size="md" color="#ef4444" />
                   <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
                   <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
@@ -405,7 +428,9 @@ const App = () => {
                 key={index}
                 className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{feature.icon}</div>
+              <div className="group-hover:scale-110 transition-transform">
+                <IconBox icon={feature.icon} size="md" color={primary} />
+              </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
               </div>
@@ -486,18 +511,14 @@ const App = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Revenue Streams</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{backgroundColor: colorWithOpacity(primary, medium)}}>
-                    <span className="text-2xl">💻</span>
-                  </div>
+                  <IconBox icon="💻" size="sm" color={primary} />
                   <div>
                     <h4 className="font-semibold text-gray-900">Hardware Sales</h4>
                     <p className="text-gray-600 text-sm">Direct sales at ₦45,000 per unit</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">📊</span>
-                  </div>
+                  <IconBox icon="📊" size="sm" color={secondary} />
                   <div>
                     <h4 className="font-semibold text-gray-900">SaaS Subscription</h4>
                     <p className="text-gray-600 text-sm">₦2,000/season for premium AI insights</p>
