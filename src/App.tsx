@@ -142,9 +142,8 @@ const App = () => {
       <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="w-10 h-10 rounded-lg" />
-              <span className="text-xl font-bold text-gray-900">SiloGuard</span>
+            <div className="flex items-center">
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-10" />
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -599,9 +598,8 @@ const App = () => {
       <footer className="bg-gray-900 py-12 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="w-10 h-10 rounded-lg" />
-              <span className="text-xl font-bold text-white">SiloGuard</span>
+            <div className="flex items-center">
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-10" />
             </div>
             <p className="text-gray-400 text-sm">
               © 2025 SiloGuard. Intelligent Protection for Stored Grains.
