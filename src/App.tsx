@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { 
+  Target, Thermometer, Sun, Smartphone, Bot, Cloud, 
+  Bug, Biohazard, Droplet, AlertTriangle, Database, 
+  Cpu, MessageSquare, BarChart3, Globe, Radio, Zap, Mic 
+} from 'lucide-react';
 
 // ========== THEME CONFIGURATION ==========
 // Update colors and styles here for site-wide changes
@@ -21,31 +26,6 @@ const colorWithOpacity = (color: string, opacityPercent: string) => {
   return color + opacity.padStart(2, '0').toUpperCase();
 };
 
-// ========== ICON COMPONENT ==========
-// Reusable icon box component with consistent styling
-interface IconBoxProps {
-  icon: string;
-  size?: 'sm' | 'md' | 'lg';
-  color?: string;
-}
-
-const IconBox = ({ icon, size = 'md', color }: IconBoxProps) => {
-  const sizeMap = {
-    sm: { box: 'w-10 h-10', text: 'text-lg' },
-    md: { box: 'w-12 h-12', text: 'text-2xl' },
-    lg: { box: 'w-24 h-24', text: 'text-4xl' },
-  };
-
-  return (
-    <div
-      className={`${sizeMap[size].box} rounded-xl flex items-center justify-center flex-shrink-0 text-white`}
-      style={{ backgroundColor: color || THEME.colors.primary }}
-    >
-      <span className={sizeMap[size].text}>{icon}</span>
-    </div>
-  );
-};
-
 const App = () => {
   const { primary, secondary } = THEME.colors;
   const { light, medium, dark } = THEME.opacity;
@@ -64,32 +44,32 @@ const App = () => {
 
   const features = [
     {
-      icon: '🎯',
+      icon: Target,
       title: 'Acoustic Detection',
       description: 'AI-powered insect detection through advanced acoustic analysis'
     },
     {
-      icon: '🌡️',
+      icon: Thermometer,
       title: 'Environmental Sensing',
       description: 'Continuous monitoring of temperature, humidity, and CO₂ levels'
     },
     {
-      icon: '☀️',
+      icon: Sun,
       title: 'Solar Powered',
       description: '100% autonomous operation with solar energy harvesting'
     },
     {
-      icon: '📱',
+      icon: Smartphone,
       title: 'SMS Alerts',
       description: 'Instant notifications without relying on internet connectivity'
     },
     {
-      icon: '🤖',
+      icon: Bot,
       title: 'Edge AI',
       description: 'On-device processing for real-time decision making'
     },
     {
-      icon: '☁️',
+      icon: Cloud,
       title: 'Cloud Dashboard',
       description: 'Comprehensive analytics and historical data tracking'
     }
@@ -99,22 +79,22 @@ const App = () => {
     {
       title: 'Insect Infestation',
       description: 'Insects feed on grains, causing weight loss and contamination',
-      icon: '🐛'
+      icon: Bug
     },
     {
       title: 'Mold Growth',
       description: 'Produces toxic mycotoxins, making grains unsafe and unmarketable',
-      icon: '🦠'
+      icon: Biohazard
     },
     {
       title: 'Moisture Fluctuations',
       description: 'Accelerates spoilage and promotes pest/mold growth',
-      icon: '💧'
+      icon: Droplet
     },
     {
       title: 'Reactive Protection',
       description: 'Conventional storages offer partial, reactive protection, not proactive prevention',
-      icon: '⚠️'
+      icon: AlertTriangle
     }
   ];
 
@@ -253,7 +233,7 @@ const App = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6" style={{backgroundColor: colorWithOpacity(primary, medium), color: primary}}>
-                <span className="mr-2">🌍</span>
+                <Globe className="mr-2 w-4 h-4" />
                 Fighting Food Waste in Nigeria
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
@@ -274,19 +254,19 @@ const App = () => {
 
               <div className="mt-12 flex flex-wrap gap-6">
                 <div className="flex items-center space-x-2">
-                  <IconBox icon="🤖" size="sm" color={primary} />
+                  <Bot className="w-6 h-6" style={{color: primary}} />
                   <span className="text-sm text-gray-600">AI/ML</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <IconBox icon="🔌" size="sm" color={primary} />
+                  <Cpu className="w-6 h-6" style={{color: primary}} />
                   <span className="text-sm text-gray-600">Embedded</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <IconBox icon="📡" size="sm" color={primary} />
+                  <Radio className="w-6 h-6" style={{color: primary}} />
                   <span className="text-sm text-gray-600">IoT</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <IconBox icon="🔊" size="sm" color={primary} />
+                  <Mic className="w-6 h-6" style={{color: primary}} />
                   <span className="text-sm text-gray-600">Acoustic</span>
                 </div>
               </div>
@@ -303,28 +283,28 @@ const App = () => {
                 
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white">
                   <div className="text-center mb-6">
-                    <div className="text-6xl mb-4">🌾</div>
+                    <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-16 mx-auto mb-4 invert brightness-0" />
                     <h3 className="text-xl font-semibold">SiloGuard Device</h3>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <div className="text-3xl mb-1">🌡️</div>
+                      <Thermometer className="w-8 h-8 mb-1 mx-auto" />
                       <div className="text-2xl font-bold">28°C</div>
                       <div className="text-xs opacity-80">Temperature</div>
                     </div>
                     <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <div className="text-3xl mb-1">💧</div>
+                      <Droplet className="w-8 h-8 mb-1 mx-auto" />
                       <div className="text-2xl font-bold">65%</div>
                       <div className="text-xs opacity-80">Humidity</div>
                     </div>
                     <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <div className="text-3xl mb-1">🌬️</div>
+                      <Cloud className="w-8 h-8 mb-1 mx-auto" />
                       <div className="text-2xl font-bold">410ppm</div>
                       <div className="text-xs opacity-80">CO₂</div>
                     </div>
                     <div className="bg-white/10 rounded-xl p-4 text-center">
-                      <div className="text-3xl mb-1">✅</div>
+                      <Database className="w-8 h-8 mb-1 mx-auto" />
                       <div className="text-lg font-bold">All Clear</div>
                       <div className="text-xs opacity-90">No Insects</div>
                     </div>
@@ -373,16 +353,19 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {problems.map((problem, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-2xl border border-red-100 hover:shadow-lg transition-shadow"
-              >
-                <IconBox icon={problem.icon} size="md" color="#ef4444" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{problem.title}</h3>
-                <p className="text-gray-600 text-sm">{problem.description}</p>
-              </div>
-            ))}
+            {problems.map((problem, index) => {
+              const IconComponent = problem.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-2xl border border-red-100 hover:shadow-lg transition-shadow"
+                >
+                  <IconComponent className="w-10 h-10 mb-4 text-red-600" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{problem.title}</h3>
+                  <p className="text-gray-600 text-sm">{problem.description}</p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="mt-16 bg-gray-50 rounded-3xl p-8 lg:p-12">
@@ -392,7 +375,9 @@ const App = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {limitations.map((item, index) => (
                 <div key={index} className="text-center">
-                  <IconBox icon="⚠️" size="md" color="#ef4444" />
+                  <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <AlertTriangle className="w-8 h-8 text-red-600" />
+                  </div>
                   <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
                   <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
@@ -423,18 +408,19 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
-              >
-              <div className="group-hover:scale-110 transition-transform">
-                <IconBox icon={feature.icon} size="md" color={primary} />
-              </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
-            ))}
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+                >
+                  <IconComponent className="w-10 h-10 mb-4 group-hover:scale-110 transition-transform" style={{color: primary}} />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -511,14 +497,18 @@ const App = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Revenue Streams</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <IconBox icon="💻" size="sm" color={primary} />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{backgroundColor: colorWithOpacity(primary, medium)}}>
+                    <Smartphone className="w-6 h-6" style={{color: primary}} />
+                  </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Hardware Sales</h4>
                     <p className="text-gray-600 text-sm">Direct sales at ₦45,000 per unit</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <IconBox icon="📊" size="sm" color={secondary} />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{backgroundColor: colorWithOpacity(secondary, medium)}}>
+                    <BarChart3 className="w-6 h-6" style={{color: secondary}} />
+                  </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">SaaS Subscription</h4>
                     <p className="text-gray-600 text-sm">₦2,000/season for premium AI insights</p>
@@ -581,7 +571,7 @@ const App = () => {
                 className="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-lg transition-shadow"
               >
                 <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
-                  <span className="text-4xl">👤</span>
+                  <MessageSquare className="w-12 h-12 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                 <p className="font-semibold" style={{color: primary}}>{member.role}</p>
@@ -630,12 +620,14 @@ const App = () => {
               Contact Us
             </button>
           </div>
-          <div className="mt-12 flex justify-center space-x-8">
-            <a href="mailto:abubakar.o.zubair@gmail.com" className="transition-colors" style={{color: '#666666'}}>
-              📧 abubakar.o.zubair@gmail.com
+          <div className="mt-12 flex justify-center gap-8 flex-wrap">
+            <a href="mailto:abubakar.o.zubair@gmail.com" className="transition-colors flex items-center gap-2" style={{color: '#666666'}}>
+              <MessageSquare className="w-5 h-5" />
+              abubakar.o.zubair@gmail.com
             </a>
-            <a href="tel:+2348138188291" className="transition-colors" style={{color: '#666666'}}>
-              📱 +234 813 818 8291
+            <a href="tel:+2348138188291" className="transition-colors flex items-center gap-2" style={{color: '#666666'}}>
+              <Smartphone className="w-5 h-5" />
+              +234 813 818 8291
             </a>
           </div>
         </div>
