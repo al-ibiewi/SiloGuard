@@ -466,6 +466,80 @@ const App = () => {
         </div>
       </section>
 
+      {/* Farmer Testimonials Video Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl lg:text-4xl font-bold text-white mb-4"
+            >
+              Hear from the Farmers
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
+            >
+              Real stories from farmers facing post-harvest challenges
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20"
+              style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
+            >
+              <div className="relative pb-[56.25%]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1"
+                  title="Farmer Interview 1"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">Farmer Interview 1</h3>
+                <p className="text-gray-300 text-sm">Experience with grain storage challenges</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20"
+              style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
+            >
+              <div className="relative pb-[56.25%]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
+                  title="Farmer Interview 2"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">Farmer Interview 2</h3>
+                <p className="text-gray-300 text-sm">Post-harvest loss impact and solutions</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Solution Section */}
       <section id="solution" className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
