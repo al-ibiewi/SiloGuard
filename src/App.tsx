@@ -670,11 +670,11 @@ const App = () => {
                   <img 
                     src="/SiloGuard/abubakar-profile.png" 
                     alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
                   />
                 ) : (
-                  <div className="w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
-                    <MessageSquare className="w-16 h-16 text-white" />
+                  <div className="w-64 h-64 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
+                    <MessageSquare className="w-32 h-32 text-white" />
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
