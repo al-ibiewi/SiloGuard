@@ -666,9 +666,17 @@ const App = () => {
                 className="bg-white/40 backdrop-blur-md p-8 rounded-2xl text-center border border-white/20 hover:shadow-lg transition-all"
                 style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
               >
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
-                  <MessageSquare className="w-12 h-12 text-white" />
-                </div>
+                {index === 0 ? (
+                  <img 
+                    src="/SiloGuard/abubakar-profile.png" 
+                    alt={member.name}
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                  />
+                ) : (
+                  <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
+                    <MessageSquare className="w-12 h-12 text-white" />
+                  </div>
+                )}
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                 <p className="font-semibold" style={{color: primary}}>{member.role}</p>
                 <p className="text-gray-500 text-sm mb-3">{member.expertise}</p>
