@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Target, Thermometer, Sun, Smartphone, Bot, Cloud, 
   Bug, Biohazard, Droplet, AlertTriangle, Database, 
@@ -238,21 +239,42 @@ const App = () => {
         
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium mb-8 bg-white/10 backdrop-blur-md border border-white/20" style={{color: secondary}}>
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium mb-8 bg-white/10 backdrop-blur-md border border-white/20" 
+              style={{color: secondary}}
+            >
               <Globe className="mr-2 w-5 h-5" />
               Saving 30% of the harvest is cheaper & easier than growing 30% more
-            </div>
+            </motion.div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-8"
+            >
               Intelligent Protection
               <span className="block mt-2" style={{color: secondary}}> for Stored Grains</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed"
+            >
               SiloGuard is a modular, solar-powered, AI-driven monitoring device that combines acoustic insect detection with environmental sensing to provide real-time early warnings.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-wrap gap-4 justify-center mb-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-wrap gap-4 justify-center mb-16"
+            >
               <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
                 <button className="text-white px-10 py-5 rounded-xl font-semibold transition-all shadow-2xl hover:scale-105" style={{backgroundColor: primary}}>
                   Learn More
@@ -261,9 +283,14 @@ const App = () => {
               <button className="text-white px-10 py-5 rounded-xl font-semibold bg-white/10 backdrop-blur-md border-2 border-white/30 transition-all hover:bg-white/20">
                 Watch Demo
               </button>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-8 justify-center">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex flex-wrap gap-8 justify-center"
+            >
               <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                 <Bot className="w-6 h-6 text-white" />
                 <span className="text-base font-medium text-white">AI/ML</span>
@@ -280,7 +307,7 @@ const App = () => {
                 <Mic className="w-6 h-6 text-white" />
                 <span className="text-base font-medium text-white">Acoustic</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -289,22 +316,46 @@ const App = () => {
       <section className="py-16" style={{backgroundColor: primary}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">30%</div>
               <div style={{color: `${secondary}ff`}}>Loss Reduction</div>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center"
+            >
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">₦3.5T</div>
               <div style={{color: `${secondary}ff`}}>Annual Losses in Nigeria</div>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-center"
+            >
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">24/7</div>
               <div style={{color: `${secondary}ff`}}>Autonomous Monitoring</div>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-center"
+            >
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">100%</div>
               <div style={{color: `${secondary}ff`}}>Solar Powered</div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -325,15 +376,19 @@ const App = () => {
             {problems.map((problem, index) => {
               const IconComponent = problem.icon;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:shadow-lg transition-all"
                   style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
                 >
                   <IconComponent className="w-10 h-10 mb-4 text-red-600" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{problem.title}</h3>
                   <p className="text-gray-600 text-sm">{problem.description}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -381,15 +436,19 @@ const App = () => {
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20 hover:shadow-lg transition-all group"
                   style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
                 >
                   <IconComponent className="w-10 h-10 mb-4 group-hover:scale-110 transition-transform" style={{color: primary}} />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-gray-600 text-sm">{feature.description}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -410,7 +469,14 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {howItWorks.map((item, index) => (
-              <div key={index} className="relative">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="relative"
+              >
                 <div className="text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{backgroundColor: primary}}>
                   {item.step}
                 </div>
@@ -419,7 +485,7 @@ const App = () => {
                 {index < howItWorks.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-16 w-full h-0.5" style={{background: `linear-gradient(to right, ${primary}, transparent)`}}></div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -439,8 +505,13 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {sdgs.map((sdg, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
                 className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl text-center hover:bg-white/20 transition-colors"
               >
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
@@ -448,7 +519,7 @@ const App = () => {
                 </div>
                 <h3 className="text-white font-semibold mb-2">{sdg.title}</h3>
                 <p className="text-white text-xs opacity-80">{sdg.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -537,8 +608,12 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {team.map((member, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="bg-white/40 backdrop-blur-md p-8 rounded-2xl text-center border border-white/20 hover:shadow-lg transition-all"
                 style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
               >
@@ -549,7 +624,7 @@ const App = () => {
                 <p className="font-semibold" style={{color: primary}}>{member.role}</p>
                 <p className="text-gray-500 text-sm mb-3">{member.expertise}</p>
                 <p className="text-gray-600 text-sm">{member.bio}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
