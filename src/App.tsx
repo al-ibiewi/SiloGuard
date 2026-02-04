@@ -143,9 +143,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl">🌾</span>
-              </div>
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="w-10 h-10 rounded-lg" />
               <span className="text-xl font-bold text-gray-900">SiloGuard</span>
             </div>
 
@@ -602,9 +600,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl">🌾</span>
-              </div>
+              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="w-10 h-10 rounded-lg" />
               <span className="text-xl font-bold text-white">SiloGuard</span>
             </div>
             <p className="text-gray-400 text-sm">
