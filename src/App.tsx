@@ -285,11 +285,12 @@ const App = () => {
               </button>
             </motion.div>
 
+            {/* Desktop View - Static */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap gap-8 justify-center"
+              className="hidden md:flex flex-wrap gap-8 justify-center"
             >
               <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                 <Bot className="w-6 h-6 text-white" />
@@ -308,6 +309,55 @@ const App = () => {
                 <span className="text-base font-medium text-white">Acoustic</span>
               </div>
             </motion.div>
+
+            {/* Mobile View - Marquee */}
+            <div className="md:hidden overflow-hidden relative w-full">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, x: [0, -1000] }}
+                transition={{ 
+                  opacity: { duration: 0.6, delay: 0.8 },
+                  x: { duration: 15, repeat: Infinity, ease: "linear", repeatType: "loop" }
+                }}
+                className="flex gap-4 whitespace-nowrap"
+                style={{ width: 'max-content' }}
+              >
+                {/* First set */}
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Bot className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">AI/ML</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Cpu className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">Embedded</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Radio className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">IoT</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Mic className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">Acoustic</span>
+                </div>
+                {/* Duplicate set for seamless loop */}
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Bot className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">AI/ML</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Cpu className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">Embedded</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Radio className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">IoT</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                  <Mic className="w-6 h-6 text-white" />
+                  <span className="text-base font-medium text-white">Acoustic</span>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
