@@ -393,7 +393,7 @@ const App = () => {
                 animate={{ opacity: 1, x: ["0%", "-50%"] }}
                 transition={{ 
                   opacity: { duration: 0.6, delay: 0.8 },
-                  x: { duration: 20, repeat: Infinity, ease: "linear", repeatType: "loop" }
+                  x: { duration: 10, repeat: Infinity, ease: "linear", repeatType: "loop" }
                 }}
                 className="flex gap-4"
               >
