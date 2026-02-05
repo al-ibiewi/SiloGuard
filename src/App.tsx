@@ -837,80 +837,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to know about SiloGuard
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:shadow-lg transition-all"
-                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)'}}
-              >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/20 transition-colors"
-                >
-                  <h3 className="text-left font-semibold text-gray-900 pr-4">
-                    {item.question}
-                  </h3>
-                  <span className="text-2xl flex-shrink-0" style={{color: primary}}>
-                    {expandedFaq === index ? '−' : '+'}
-                  </span>
-                </button>
-                
-                {expandedFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="px-6 pb-4 pt-2 border-t border-white/20 bg-white/10"
-                  >
-                    <p className="text-gray-700 leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-12 p-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-gray-200 text-center"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">
-              Still have questions?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Our team is ready to help. Reach out to us directly.
-            </p>
-            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
-              <button className="text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
-                Contact Us on WhatsApp
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Team Section */}
       <section id="team" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -985,6 +911,80 @@ const App = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Everything you need to know about SiloGuard
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:shadow-lg transition-all"
+                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)'}}
+              >
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/20 transition-colors"
+                >
+                  <h3 className="text-left font-semibold text-gray-900 pr-4">
+                    {item.question}
+                  </h3>
+                  <span className="text-2xl flex-shrink-0" style={{color: primary}}>
+                    {expandedFaq === index ? '−' : '+'}
+                  </span>
+                </button>
+                
+                {expandedFaq === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="px-6 pb-4 pt-2 border-t border-white/20 bg-white/10"
+                  >
+                    <p className="text-gray-700 leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 p-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-gray-200 text-center"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              Still have questions?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Our team is ready to help. Reach out to us directly.
+            </p>
+            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+              <button className="text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
+                Contact Us on WhatsApp
+              </button>
+            </a>
+          </motion.div>
         </div>
       </section>
 
