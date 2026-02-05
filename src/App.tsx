@@ -1,10 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { 
   Target, Thermometer, Sun, Smartphone, Bot, Cloud, 
-  Bug, Biohazard, Droplet, AlertTriangle, Database, 
-  Cpu, MessageSquare, BarChart3, Globe, Radio, Zap, Mic 
+  Bug, Biohazard, Droplet, AlertTriangle,
+  Cpu, MessageSquare, BarChart3, Globe, Radio, Mic 
 } from 'lucide-react';
+
+// Lazy load below-fold sections for better initial load
+const ImpactSection = lazy(() => import('./components/ImpactSection'));
+const TeamSection = lazy(() => import('./components/TeamSection'));
+const FAQSection = lazy(() => import('./components/FAQSection'));
 
 // ========== THEME CONFIGURATION ==========
 // Update colors and styles here for site-wide changes
@@ -58,11 +63,10 @@ const Counter = ({ end, duration = 2, suffix = '' }: { end: number; duration?: n
 
 const App = () => {
   const { primary, secondary } = THEME.colors;
-  const { light, medium, dark } = THEME.opacity;
+  const { light, medium } = THEME.opacity;
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -167,77 +171,9 @@ const App = () => {
     }
   ];
 
-  const sdgs = [
-    { number: '2', title: 'Zero Hunger', description: 'Save food that is already grown, effectively increasing supply' },
-    { number: '13', title: 'Climate Action', description: 'Solar-powered + preventing carbon footprint of wasted food' },
-    { number: '3', title: 'Good Health', description: 'Early mold detection prevents carcinogenic mycotoxins' },
-    { number: '9', title: 'Innovation', description: 'Bringing cutting-edge AI to the rural "last mile"' },
-    { number: '12', title: 'Responsible Production', description: 'Promoting sustainable consumption patterns' }
-  ];
 
-  const faqItems = [
-    {
-      question: 'How does SiloGuard detect insect infestations?',
-      answer: 'SiloGuard uses advanced acoustic sensors to detect the sound frequencies produced by insects feeding on grains. Our AI algorithms analyze these acoustic patterns in real-time to identify pest activity before visible damage occurs.'
-    },
-    {
-      question: 'Does SiloGuard require internet or grid power?',
-      answer: 'No. SiloGuard is 100% solar-powered and operates completely off-grid. It uses SMS for alerts, so it only needs basic cellular connectivity - no Wi-Fi or electricity required.'
-    },
-    {
-      question: 'How much does a SiloGuard device cost?',
-      answer: 'A SiloGuard unit costs ₦45,000 and protects a 50-ton grain storage. Based on average losses of 30%+, the device pays for itself within just 1 harvest season by preventing spoilage.'
-    },
-    {
-      question: 'How often do I get alerts?',
-      answer: 'You receive real-time SMS alerts as soon as our AI detects pest activity or dangerous environmental conditions (high humidity, temperature fluctuations). You can also check your cloud dashboard anytime for historical data.'
-    },
-    {
-      question: 'Is there a subscription fee?',
-      answer: 'Basic hardware and SMS alerts are included with purchase. Optional: SaaS analytics subscription (₦2,000/season) for industries wanting advanced insights, predictive analytics, and multi-site monitoring.'
-    },
-    {
-      question: 'What about mold detection?',
-      answer: 'SiloGuard monitors environmental factors (humidity, temperature, CO₂) that promote mold growth. When conditions favor mold, you get immediate alerts to take corrective action before mycotoxins develop.'
-    },
-    {
-      question: 'Can I use SiloGuard with multiple grain stores?',
-      answer: 'Yes! Each device covers a 50-ton storage unit. You can deploy multiple units across different silos and monitor all of them on a single dashboard, especially with our SaaS subscription.'
-    },
-    {
-      question: 'How long does a SiloGuard device last?',
-      answer: 'Our devices are built to withstand harsh agricultural environments. With proper maintenance, they last multiple years, meaning the payback period is even better as you benefit from seasons of protection.'
-    },
-    {
-      question: 'Do I need any special training to use it?',
-      answer: 'No special training required. Installation takes a few hours, and you immediately start receiving SMS alerts. Everything is designed to be simple and intuitive for farmers.'
-    },
-    {
-      question: 'What makes SiloGuard different from other solutions?',
-      answer: 'SiloGuard is the only solution that combines acoustic insect detection + environmental monitoring + solar power + SMS alerts specifically for off-grid rural farming. Most competitors require grid power and internet, making them useless in remote areas.'
-    }
-  ];
 
-  const team = [
-    {
-      name: 'Abubakar Zubair Okhayole',
-      role: 'CTO',
-      expertise: 'Electrical Engineering | IoT & Edge AI Specialist',
-      bio: 'Founder of AL-IBIEWI, specializing in embedded systems and AIoT solutions'
-    },
-    {
-      name: 'Ammar Ahmad Faringida',
-      role: 'COO',
-      expertise: 'Food Science & Technology',
-      bio: 'Specialist in post-harvest safety and food quality management'
-    }
-  ];
 
-  const financials = [
-    { metric: 'Units Sold', year1: '500', year2: '5,000', year3: '25,000' },
-    { metric: 'Annual Revenue', year1: '₦22.5M', year2: '₦235M', year3: '₦1.17B' },
-    { metric: 'Gross Profit (37%)', year1: '₦8.3M', year2: '₦87M', year3: '₦435M' }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden w-full">
@@ -304,11 +240,18 @@ const App = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-16 relative min-h-screen flex items-center overflow-x-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{backgroundImage: 'url(/SiloGuard/grains.webp), url(/SiloGuard/grains.png)'}}
-        ></div>
+        {/* Background Image - prioritize for LCP */}
+        <picture className="absolute inset-0">
+          <source srcSet="/SiloGuard/grains.webp" type="image/webp" />
+          <img 
+            src="/SiloGuard/grains.png" 
+            alt="Grain storage background"
+            className="w-full h-full object-cover"
+            width="1920"
+            height="1080"
+            fetchPriority="high"
+          />
+        </picture>
         
         {/* Dark Overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
@@ -678,39 +621,10 @@ const App = () => {
         </div>
       </section>
 
-      {/* Impact & SDGs */}
-      <section id="impact" className="py-20" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              Impact & Sustainable Development Goals
-            </h2>
-            <p className="text-xl text-white max-w-3xl mx-auto opacity-90">
-              Saving 30% of the harvest is cheaper & easier than growing 30% more
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {sdgs.map((sdg, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl text-center hover:bg-white/20 transition-colors"
-              >
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold" style={{color: primary}}>{sdg.number}</span>
-                </div>
-                <h3 className="text-white font-semibold mb-2">{sdg.title}</h3>
-                <p className="text-white text-xs opacity-80">{sdg.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Impact & SDGs - Lazy Loaded */}
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <ImpactSection />
+      </Suspense>
 
       {/* Business Model */}
       <section className="py-20 bg-gray-50">
@@ -817,162 +731,20 @@ const App = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section id="team" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our team combines Engineering and Food Science to solve agricultural problems with Data & ML
-            </p>
-          </div>
+      {/* Team Section - Lazy Loaded */}
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <TeamSection />
+      </Suspense>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-white/40 backdrop-blur-md p-8 rounded-2xl text-center border border-white/20 hover:shadow-lg transition-all"
-                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
-              >
-                {index === 0 ? (
-                  <picture>
-                    <source srcSet="/SiloGuard/abubakar-profile.webp" type="image/webp" />
-                    <img 
-                      src="/SiloGuard/abubakar-profile.png" 
-                      alt={member.name}
-                      className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
-                      width="256"
-                      height="256"
-                      loading="lazy"
-                    />
-                  </picture>
-                ) : index === 1 ? (
-                  <picture>
-                    <source srcSet="/SiloGuard/ammar-profile.webp" type="image/webp" />
-                    <img 
-                      src="/SiloGuard/ammar-profile.png" 
-                      alt={member.name}
-                      className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
-                      width="256"
-                      height="256"
-                      loading="lazy"
-                    />
-                  </picture>
-                ) : (
-                  <div className="w-64 h-64 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
-                    <MessageSquare className="w-32 h-32 text-white" />
-                  </div>
-                )}
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="font-semibold" style={{color: primary}}>{member.role}</p>
-                <p className="text-gray-500 text-sm mb-3">{member.expertise}</p>
-                <p className="text-gray-600 text-sm">{member.bio}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* FAQ Section - Lazy Loaded */}
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <FAQSection />
+      </Suspense>
 
-          <div className="mt-16 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              What Experts Say About SiloGuard
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
-                <div className="text-4xl mb-2" style={{color: primary}}>"</div>
-                <p className="text-gray-700 mb-4">This project is an impressive idea. I will contact Dr. Mustapha for you to meet him as he has expertise in Food Egineering</p>
-                <p className="font-semibold text-gray-900">Prof. Hauwa L. Yusuf</p>
-                <p className="text-sm text-gray-500">Food Science, BUK</p>
-              </div>
-              <div className="bg-white/40 backdrop-blur-md p-6 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
-                <div className="text-4xl mb-2" style={{color: secondary}}>"</div>
-                <p className="text-gray-700 mb-4">[He acknowledged the idea and added:] 
-“You will need a large amount of data for this product. I will connect you will and expert in Ai modelling in China, who is my friend”</p>
-                <p className="font-semibold text-gray-900">Dr. Mustapha</p>
-                <p className="text-sm text-gray-500">PhD Food Safety, M.D. Rice Processing Factory</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to know about SiloGuard
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:shadow-lg transition-all"
-                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)'}}
-              >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/20 transition-colors"
-                >
-                  <h3 className="text-left font-semibold text-gray-900 pr-4">
-                    {item.question}
-                  </h3>
-                  <span className="text-2xl flex-shrink-0" style={{color: primary}}>
-                    {expandedFaq === index ? '−' : '+'}
-                  </span>
-                </button>
-                
-                {expandedFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="px-6 pb-4 pt-2 border-t border-white/20 bg-white/10"
-                  >
-                    <p className="text-gray-700 leading-relaxed">
-                      {item.answer}
-                    </p>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-12 p-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-gray-200 text-center"
-          >
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">
-              Still have questions?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Our team is ready to help. Reach out to us directly.
-            </p>
-            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
-              <button className="text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
-                Contact Us on WhatsApp
-              </button>
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      {/* FAQ Section - Lazy Loaded */}
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <FAQSection />
+      </Suspense>
 
       {/* CTA Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
