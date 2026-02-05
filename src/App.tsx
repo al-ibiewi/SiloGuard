@@ -390,13 +390,12 @@ const App = () => {
             <div className="md:hidden overflow-x-hidden relative w-full max-w-full">
               <motion.div
                 initial={{ opacity: 0, x: 0 }}
-                animate={{ opacity: 1, x: [0, -100] }}
+                animate={{ opacity: 1, x: "-50%" }}
                 transition={{ 
                   opacity: { duration: 0.6, delay: 0.8 },
-                  x: { duration: 5, repeat: Infinity, ease: "linear" }
+                  x: { duration: 15, repeat: Infinity, ease: "linear" }
                 }}
                 className="flex gap-4"
-                style={{ width: '200%' }}
               >
                 {/* First set */}
                 <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
