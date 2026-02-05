@@ -388,50 +388,30 @@ const App = () => {
 
             {/* Mobile View - Marquee */}
             <div className="md:hidden overflow-x-hidden relative w-full max-w-full">
-              <motion.div
-                initial={{ opacity: 0, x: 0 }}
-                animate={{ opacity: 1, x: "-50%" }}
-                transition={{ 
-                  opacity: { duration: 0.6, delay: 0.8 },
-                  x: { duration: 15, repeat: Infinity, ease: "linear" }
-                }}
-                className="flex gap-4"
-              >
-                {/* First set */}
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Bot className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">AI/ML</span>
+              <div className="inline-block animate-marquee">
+                <div className="flex gap-4">
+                  {[...Array(3)].map((_, setIndex) => (
+                    <div key={setIndex} className="flex gap-4">
+                      <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                        <Bot className="w-6 h-6 text-white flex-shrink-0" />
+                        <span className="text-base font-medium text-white">AI/ML</span>
+                      </div>
+                      <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                        <Cpu className="w-6 h-6 text-white flex-shrink-0" />
+                        <span className="text-base font-medium text-white">Embedded</span>
+                      </div>
+                      <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                        <Radio className="w-6 h-6 text-white flex-shrink-0" />
+                        <span className="text-base font-medium text-white">IoT</span>
+                      </div>
+                      <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
+                        <Mic className="w-6 h-6 text-white flex-shrink-0" />
+                        <span className="text-base font-medium text-white">Acoustic</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Cpu className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">Embedded</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Radio className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">IoT</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Mic className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">Acoustic</span>
-                </div>
-                {/* Duplicate set for seamless loop */}
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Bot className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">AI/ML</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Cpu className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">Embedded</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Radio className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">IoT</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 whitespace-nowrap">
-                  <Mic className="w-6 h-6 text-white flex-shrink-0" />
-                  <span className="text-base font-medium text-white">Acoustic</span>
-                </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
