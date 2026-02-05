@@ -248,7 +248,7 @@ const App = () => {
             <div className="flex items-center">
               <picture>
                 <source srcSet="/SiloGuard/logo.webp" type="image/webp" />
-                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" width="180" height="52" />
               </picture>
             </div>
 
@@ -847,6 +847,9 @@ const App = () => {
                       src="/SiloGuard/abubakar-profile.png" 
                       alt={member.name}
                       className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
+                      width="256"
+                      height="256"
+                      loading="lazy"
                     />
                   </picture>
                 ) : index === 1 ? (
@@ -856,6 +859,9 @@ const App = () => {
                       src="/SiloGuard/ammar-profile.png" 
                       alt={member.name}
                       className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
+                      width="256"
+                      height="256"
+                      loading="lazy"
                     />
                   </picture>
                 ) : (
@@ -1009,7 +1015,7 @@ const App = () => {
             <div className="flex items-center">
               <picture>
                 <source srcSet="/SiloGuard/logo.webp" type="image/webp" />
-                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" width="180" height="52" loading="lazy" />
               </picture>
             </div>
             <p className="text-gray-400 text-sm">
