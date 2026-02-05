@@ -62,6 +62,7 @@ const App = () => {
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -174,6 +175,49 @@ const App = () => {
     { number: '12', title: 'Responsible Production', description: 'Promoting sustainable consumption patterns' }
   ];
 
+  const faqItems = [
+    {
+      question: 'How does SiloGuard detect insect infestations?',
+      answer: 'SiloGuard uses advanced acoustic sensors to detect the sound frequencies produced by insects feeding on grains. Our AI algorithms analyze these acoustic patterns in real-time to identify pest activity before visible damage occurs.'
+    },
+    {
+      question: 'Does SiloGuard require internet or grid power?',
+      answer: 'No. SiloGuard is 100% solar-powered and operates completely off-grid. It uses SMS for alerts, so it only needs basic cellular connectivity - no Wi-Fi or electricity required.'
+    },
+    {
+      question: 'How much does a SiloGuard device cost?',
+      answer: 'A SiloGuard unit costs ₦45,000 and protects a 50-ton grain storage. Based on average losses of 30%+, the device pays for itself within just 1 harvest season by preventing spoilage.'
+    },
+    {
+      question: 'How often do I get alerts?',
+      answer: 'You receive real-time SMS alerts as soon as our AI detects pest activity or dangerous environmental conditions (high humidity, temperature fluctuations). You can also check your cloud dashboard anytime for historical data.'
+    },
+    {
+      question: 'Is there a subscription fee?',
+      answer: 'Basic hardware and SMS alerts are included with purchase. Optional: SaaS analytics subscription (₦2,000/season) for industries wanting advanced insights, predictive analytics, and multi-site monitoring.'
+    },
+    {
+      question: 'What about mold detection?',
+      answer: 'SiloGuard monitors environmental factors (humidity, temperature, CO₂) that promote mold growth. When conditions favor mold, you get immediate alerts to take corrective action before mycotoxins develop.'
+    },
+    {
+      question: 'Can I use SiloGuard with multiple grain stores?',
+      answer: 'Yes! Each device covers a 50-ton storage unit. You can deploy multiple units across different silos and monitor all of them on a single dashboard, especially with our SaaS subscription.'
+    },
+    {
+      question: 'How long does a SiloGuard device last?',
+      answer: 'Our devices are built to withstand harsh agricultural environments. With proper maintenance, they last multiple years, meaning the payback period is even better as you benefit from seasons of protection.'
+    },
+    {
+      question: 'Do I need any special training to use it?',
+      answer: 'No special training required. Installation takes a few hours, and you immediately start receiving SMS alerts. Everything is designed to be simple and intuitive for farmers.'
+    },
+    {
+      question: 'What makes SiloGuard different from other solutions?',
+      answer: 'SiloGuard is the only solution that combines acoustic insect detection + environmental monitoring + solar power + SMS alerts specifically for off-grid rural farming. Most competitors require grid power and internet, making them useless in remote areas.'
+    }
+  ];
+
   const team = [
     {
       name: 'Abubakar Zubair Okhayole',
@@ -202,18 +246,21 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+              <picture>
+                <source srcSet="/SiloGuard/logo.webp" type="image/webp" />
+                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+              </picture>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              {['home', 'problem', 'solution', 'how', 'impact', 'team', 'contact'].map((item) => (
+              {['home', 'solution', 'how', 'team', 'faq', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
                   className={`capitalize text-sm font-medium transition-colors ${activeSection === item ? '' : 'text-gray-600'}`}
                   style={{color: activeSection === item ? primary : undefined}}
                 >
-                  {item === 'how' ? 'How It Works' : item}
+                  {item === 'how' ? 'How It Works' : item === 'faq' ? 'FAQ' : item}
                 </button>
               ))}
               <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
@@ -240,14 +287,14 @@ const App = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-4 space-y-3">
-              {['home', 'problem', 'solution', 'how', 'impact', 'team', 'contact'].map((item) => (
+              {['home', 'solution', 'how', 'team', 'faq', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
                   className="block w-full text-left capitalize py-2 text-gray-600"
                   style={{color: activeSection === item ? primary : undefined}}
                 >
-                  {item === 'how' ? 'How It Works' : item}
+                  {item === 'how' ? 'How It Works' : item === 'faq' ? 'FAQ' : item}
                 </button>
               ))}
             </div>
@@ -260,7 +307,7 @@ const App = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{backgroundImage: 'url(/SiloGuard/grains.png)'}}
+          style={{backgroundImage: 'url(/SiloGuard/grains.webp), url(/SiloGuard/grains.png)'}}
         ></div>
         
         {/* Dark Overlay for better text visibility */}
@@ -690,67 +737,177 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Business & Revenue Model
+              Smart Investment, Proven Returns
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Your losses pay for the device. Save your harvest, save your income.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Revenue Streams</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" 
+              style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6" style={{color: primary}}>The Real Cost</h3>
               <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-white/30" style={{backgroundColor: colorWithOpacity(primary, medium)}}>
-                    <Smartphone className="w-6 h-6" style={{color: primary}} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Hardware Sales</h4>
-                    <p className="text-gray-600 text-sm">Direct sales at ₦45,000 per unit</p>
-                  </div>
+                <div className="p-4 bg-red-50 rounded-xl border border-red-200">
+                  <p className="text-gray-700 mb-2"><strong>Current Losses:</strong></p>
+                  <p className="text-2xl font-bold text-red-600">30%+ of your harvest</p>
+                  <p className="text-sm text-gray-600 mt-2">Lost to insects, mold, and spoilage annually</p>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-white/30" style={{backgroundColor: colorWithOpacity(secondary, medium)}}>
-                    <BarChart3 className="w-6 h-6" style={{color: secondary}} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">SaaS Subscription</h4>
-                    <p className="text-gray-600 text-sm">₦2,000/season for premium AI insights</p>
-                  </div>
-                </div>
-                <div className="mt-6 p-4 bg-gray-50 rounded-xl">
+                <div className="p-4 bg-gray-50 rounded-xl">
                   <p className="text-sm text-gray-600">
-                    <strong>Unit Economics:</strong> COGS ~₦28,000, yielding a ~37% gross margin
+                    For a 50-ton grain store at ₦1,500/kg: <br/>
+                    <strong>Loss = ₦22.5M+ per season</strong>
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">3-Year Financial Forecast</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-gray-100">
-                      <th className="text-left py-3 text-gray-500 font-medium">Metric</th>
-                      <th className="text-center py-3 text-gray-500 font-medium">Year 1</th>
-                      <th className="text-center py-3 text-gray-500 font-medium">Year 2</th>
-                      <th className="text-center py-3 text-gray-500 font-medium">Year 3</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {financials.map((row, index) => (
-                      <tr key={index} className="border-b border-gray-50">
-                        <td className="py-4 text-gray-700 font-medium">{row.metric}</td>
-                        <td className="py-4 text-center font-semibold" style={{color: primary}}>{row.year1}</td>
-                        <td className="py-4 text-center font-semibold" style={{color: primary}}>{row.year2}</td>
-                        <td className="py-4 text-center font-semibold" style={{color: primary}}>{row.year3}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white/40 backdrop-blur-md p-8 rounded-2xl border border-white/20" 
+              style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6" style={{color: secondary}}>The SiloGuard Solution</h3>
+              <div className="space-y-4">
+                <div className="p-4 bg-green-50 rounded-xl border border-green-200">
+                  <p className="text-gray-700 mb-2"><strong>Device Investment:</strong></p>
+                  <p className="text-2xl font-bold text-green-600">₦45,000 per unit</p>
+                  <p className="text-sm text-gray-600 mt-2">Protect 50-ton storage + get real-time alerts</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-xl">
+                  <p className="text-sm text-gray-600 mb-3">
+                    <strong>Payback Timeline:</strong>
+                  </p>
+                  <p className="text-lg font-semibold text-gray-900">
+                    <strong style={{color: secondary}}>1 Harvest Season</strong>
+                  </p>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Save just 5% of losses → Device pays for itself + generates profit
+                  </p>
+                </div>
               </div>
-              <p className="mt-4 text-sm text-gray-500">Break-Even: 1,500 units</p>
-            </div>
+            </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-8 bg-gradient-to-r from-blue-50 to-green-50 border-2 rounded-2xl p-8 border-gray-200"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Revenue Model</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <div className="flex items-start space-x-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: colorWithOpacity(primary, light)}}>
+                    <Smartphone className="w-5 h-5" style={{color: primary}} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Hardware</h4>
+                    <p className="text-sm text-gray-600">₦45,000 per unit</p>
+                    <p className="text-xs text-gray-500 mt-1">For farmers protecting their harvest</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-start space-x-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: colorWithOpacity(secondary, light)}}>
+                    <BarChart3 className="w-5 h-5" style={{color: secondary}} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">SaaS Insights</h4>
+                    <p className="text-sm text-gray-600">₦2,000/season</p>
+                    <p className="text-xs text-gray-500 mt-1">For industries wanting advanced analytics</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Everything you need to know about SiloGuard
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-white/40 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:shadow-lg transition-all"
+                style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)'}}
+              >
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-white/20 transition-colors"
+                >
+                  <h3 className="text-left font-semibold text-gray-900 pr-4">
+                    {item.question}
+                  </h3>
+                  <span className="text-2xl flex-shrink-0" style={{color: primary}}>
+                    {expandedFaq === index ? '−' : '+'}
+                  </span>
+                </button>
+                
+                {expandedFaq === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="px-6 pb-4 pt-2 border-t border-white/20 bg-white/10"
+                  >
+                    <p className="text-gray-700 leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 p-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-gray-200 text-center"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              Still have questions?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Our team is ready to help. Reach out to us directly.
+            </p>
+            <a href="https://wa.link/kj1rz8" target="_blank" rel="noopener noreferrer">
+              <button className="text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg" style={{backgroundColor: primary}}>
+                Contact Us on WhatsApp
+              </button>
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -778,17 +935,23 @@ const App = () => {
                 style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
               >
                 {index === 0 ? (
-                  <img 
-                    src="/SiloGuard/abubakar-profile.png" 
-                    alt={member.name}
-                    className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
-                  />
+                  <picture>
+                    <source srcSet="/SiloGuard/abubakar-profile.webp" type="image/webp" />
+                    <img 
+                      src="/SiloGuard/abubakar-profile.png" 
+                      alt={member.name}
+                      className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
+                    />
+                  </picture>
                 ) : index === 1 ? (
-                  <img 
-                    src="/SiloGuard/ammar-profile.png" 
-                    alt={member.name}
-                    className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
-                  />
+                  <picture>
+                    <source srcSet="/SiloGuard/ammar-profile.webp" type="image/webp" />
+                    <img 
+                      src="/SiloGuard/ammar-profile.png" 
+                      alt={member.name}
+                      className="w-64 h-64 rounded-full mx-auto mb-4 object-cover"
+                    />
+                  </picture>
                 ) : (
                   <div className="w-64 h-64 rounded-full flex items-center justify-center mx-auto mb-4" style={{background: `linear-gradient(to bottom right, ${primary}, ${secondary})`}}>
                     <MessageSquare className="w-32 h-32 text-white" />
@@ -864,7 +1027,10 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center">
-              <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+              <picture>
+                <source srcSet="/SiloGuard/logo.webp" type="image/webp" />
+                <img src="/SiloGuard/logo.png" alt="SiloGuard" className="h-13" />
+              </picture>
             </div>
             <p className="text-gray-400 text-sm">
               © 2025 SiloGuard. Intelligent Protection for Stored Grains.
