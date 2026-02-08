@@ -18,3 +18,112 @@ html, body {
 .animate-marquee {
   animation: marquee 10s linear infinite;
 }
+
+.quote-highlight {
+  background: rgba(156, 211, 46, 0.25);
+  color: #f7ffe0;
+  padding: 0.08rem 0.35rem;
+  border-radius: 0.4rem;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+.interview-panel {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.interview-panel::before {
+  content: '';
+  position: absolute;
+  inset: -40% 40% 40% -40%;
+  background: radial-gradient(circle, rgba(156, 211, 46, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.interview-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.interview-panel__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.35rem;
+}
+
+.interview-panel__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.interview-panel__badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.interview-panel__list {
+  display: grid;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.interview-panel__item {
+  padding: 1rem 1.1rem 1rem 1.4rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.interview-panel__item::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(156, 211, 46, 0.9), rgba(255, 255, 255, 0));
+  border-radius: 999px;
+}
+
+.interview-panel__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f7ffe0;
+  background: rgba(156, 211, 46, 0.18);
+  border: 1px solid rgba(156, 211, 46, 0.35);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  margin-bottom: 0.6rem;
+}
+
+.interview-panel__quote {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

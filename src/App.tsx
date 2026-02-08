@@ -554,7 +554,7 @@ const App = () => {
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-10 max-w-6xl mx-auto items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -566,15 +566,15 @@ const App = () => {
               <div className="relative pb-[56.25%]">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1"
-                  title="Farmer Interview 1"
+                  src="https://www.youtube.com/embed/ee2LowKgVSQ"
+                  title="Farmers Interview - One Merged"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">Farmer Interview 1</h3>
-                <p className="text-gray-300 text-sm">Experience with grain storage challenges</p>
+                <h3 className="text-xl font-bold text-white mb-2">Farmers Interview</h3>
+                <p className="text-gray-300 text-sm">Three voices, one shared reality of post-harvest storage</p>
               </div>
             </motion.div>
 
@@ -583,21 +583,34 @@ const App = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20"
-              style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)'}}
+              className="interview-panel"
             >
-              <div className="relative pb-[56.25%]">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
-                  title="Farmer Interview 2"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+              <div className="interview-panel__header">
+                <div>
+                  <p className="interview-panel__eyebrow">Interview Notes</p>
+                  <h3 className="interview-panel__title">Words That Matter</h3>
+                </div>
+                <span className="interview-panel__badge">3 farmers</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">Farmer Interview 2</h3>
-                <p className="text-gray-300 text-sm">Post-harvest loss impact and solutions</p>
+              <div className="interview-panel__list">
+                <div className="interview-panel__item">
+                  <div className="interview-panel__tag">Jaafar</div>
+                  <p className="interview-panel__quote">
+                    But for us, where this <span className="quote-highlight">progress has not reached us</span> yet - we only see it on phones or hear stories about it - so for us, the way we realize there is a problem is by <span className="quote-highlight">Entering</span>... And anyone who stores farm produce, it is necessary for them to enter - if not every day, then <span className="quote-highlight">from time to time</span>.
+                  </p>
+                </div>
+                <div className="interview-panel__item">
+                  <div className="interview-panel__tag">Maaruf Jibrin</div>
+                  <p className="interview-panel__quote">
+                    Very much so, it will definitely help. It will be a huge help because we are always <span className="quote-highlight">moving forward</span>, with this research that my colleagues, leaders, teachers, and friends are conducting. It will bring <span className="quote-highlight">progress</span>.
+                  </p>
+                </div>
+                <div className="interview-panel__item">
+                  <div className="interview-panel__tag">Saeed</div>
+                  <p className="interview-panel__quote">
+                    Yes, it will... it will <span className="quote-highlight">help</span>.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
